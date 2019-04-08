@@ -1,0 +1,60 @@
+{
+  "name": "strifinder-profile",
+  "version": "1.0.0",
+  "description": "Profile work",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start:dev",
+    "start:prod": "./node_modules/.bin/pm2 start dist/index.js --name=ml-price-predition",
+    "start:dev": "node index.js",
+    "stop": "./node_modules/.bin/pm2 delete --name=ml-price-predition",
+    "build": "./node_modules/.bin/tsc -d -p tsconfig.json",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "start-dev": "node index.js",
+    "check": "tslint --project .",
+    "clean": "gts clean",
+    "compile": "npm run build",
+    "fix": "tslint --project . --fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check",
+    "test": "mocha -r ts-node/register test/**/*.test.ts --exit",
+    "test:nyc": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register test/**/*.test.ts --exit && nyc report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/TanoCuile/profile.git"
+  },
+  "author": "strifinder@gmail.com",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://gitlab.com/TanoCuile/profile/issues"
+  },
+  "homepage": "https://gitlab.com/TanoCuile/profile#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/chai-http": "^3.0.5",
+    "@types/chai-spies": "^1.0.0",
+    "@types/chai-things": "0.0.33",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.11.6",
+    "@types/dotenv": "^6.1.0",
+    "@types/winston": "^2.4.4",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "chai-spies": "^1.0.0",
+    "chai-things": "^0.2.0",
+    "gts": "^0.7.1",
+    "nyc": "^13.3.0",
+    "mocha": "^6.0.2",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.14.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.4000",
+    "debug": "^4.1.1"
+  },
+  "dependencies": {
+    "inquirer": "^6.2.2"
+  }
+}
